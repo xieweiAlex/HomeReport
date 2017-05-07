@@ -15,6 +15,7 @@
 		07FE08DF1EBFB51B008C404A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07FE08DD1EBFB51B008C404A /* LaunchScreen.storyboard */; };
 		07FE08EA1EBFB51B008C404A /* HomeReportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FE08E91EBFB51B008C404A /* HomeReportTests.swift */; };
 		07FE08F51EBFB51B008C404A /* HomeReportUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FE08F41EBFB51B008C404A /* HomeReportUITests.swift */; };
+		07FE09031EBFB5EF008C404A /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FE09021EBFB5EF008C404A /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		07FE08F01EBFB51B008C404A /* HomeReportUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeReportUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		07FE08F41EBFB51B008C404A /* HomeReportUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReportUITests.swift; sourceTree = "<group>"; };
 		07FE08F61EBFB51B008C404A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		07FE09021EBFB5EF008C404A /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				07FE08D21EBFB51B008C404A /* AppDelegate.swift */,
+				07FE09021EBFB5EF008C404A /* CoreDataStack.swift */,
 				07FE08D41EBFB51B008C404A /* FirstViewController.swift */,
 				07FE08D61EBFB51B008C404A /* SecondViewController.swift */,
 				07FE08D81EBFB51B008C404A /* Main.storyboard */,
@@ -268,6 +271,7 @@
 				07FE08D71EBFB51B008C404A /* SecondViewController.swift in Sources */,
 				07FE08D31EBFB51B008C404A /* AppDelegate.swift in Sources */,
 				07FE08D51EBFB51B008C404A /* FirstViewController.swift in Sources */,
+				07FE09031EBFB5EF008C404A /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
