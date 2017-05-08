@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        deleteRecords()
         checkDataStore()
         
         let path = Bundle.main.resourcePath
@@ -55,13 +56,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let moc = coreData.persistentContainer.viewContext
         do {
-//            let homeCount = try moc.count(for: request)
+            let homeCount = try moc.count(for: request)
             
 //            guard homeCount != 0 else {
-//            if homeCount == 0 {
-            
+            if homeCount == 0 {
                 uploadSampleData()
-//            }
+            }
         }
         catch {
             fatalError("Error in counting home record ")
@@ -75,14 +75,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let urlPath = Bundle.main.url(forResource: "homes", withExtension: "json")
         let data = try? Data(contentsOf: urlPath!)
         
-       print("urlpath: \(urlPath)")
-       print("data: \(data)")
-        
         do {
             let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
             
             let jsonArray = jsonResult.value(forKey: "home") as! NSArray
-            print("jsonArray: \(jsonArray)")
+//            print("jsonArray: \(jsonArray)")
             
             //var home: NSManagedObject?
             for json in jsonArray {
@@ -183,5 +180,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
 
+    internal func deleteRecords() {
+        let moc = coreData.persistentContainer.viewContext
+        let homeRequest: NSFetchRequest<Home> = Home.fetchRequest()
+        let saleHistoryRequest: NSFetchRequest<SaleHistory> = SaleHistory.fetchRequest()
+        
+        var deleteRequest: NSBatchDeleteRequest
+        var deleteResults: NSPersistentStoreResult
+        
+        do {
+//            deleteRequest = NSBatchDeleteResult(NSFetchRequest: homeRequest as! NSFetchRequest<NSFetchRequestResult>)
+            
+            deleteRequest = NSBatchDeleteRequest(fetchRequest: homeRequest as! NSFetchRequest<NSFetchRequestResult>)
+            
+            deleteResults = try moc.execute(deleteRequest)
+            
+            deleteRequest = NSBatchDeleteRequest(fetchRequest: saleHistoryRequest as! NSFetchRequest<NSFetchRequestResult>)
+            deleteResults = try moc.execute(deleteRequest)
+
+        }
+        catch {
+            fatalError("Failed removing existing records")
+        }
+        
+        
+        
+    }
 }
 
